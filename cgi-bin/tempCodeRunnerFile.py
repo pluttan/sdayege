@@ -1,0 +1,1 @@
+#chmod -R  u=rwx,g=rwx,o=rwx ../site_for_school
