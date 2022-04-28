@@ -1,6 +1,9 @@
 import pymysql.cursors  #doks: https://pypi.org/project/PyMySQL/
 from time import time
+import sys
+sys.path.insert(0, '/Users/pluttan/Desktop/проекты/sDAYege/')
 from obrmes import conv_to_dict
+import json
 
 # Connect to the database
 
@@ -52,16 +55,23 @@ def getuser(d):
 def insert(table,noper):
     sql="INSERT INTO {0} VALUES ({1})"
     per=""
-    for i in range(noper):per+=", {"+str(i)+"}"  
+    for i in range(noper):per+=", '{"+str(i)+"}'"  
     return sql.format(table,per[2:])
 
-def select(table,whatcol=None,wherecol=None,where=None):
+def select(table,whatcol=None,wherecol=None,where=None,col_to_get="uid",no_col=0):
     sql="select {0} from "+table
     if where!=None:
         sql+=" where "+wherecol+"="+str(where)
-    print(sql.format(whatcol if whatcol!=None else "*"))
-    return onbase([sql.format(whatcol if whatcol!=None else "*")])[0]['uid']
-
+    sql.format(whatcol if whatcol!=None else "*")
+    try:
+        a=onbase([sql.format(whatcol if whatcol!=None else "*")])
+        if no_col=="all":
+            if col_to_get!=None:return [i[col_to_get] for i in a]
+            else:return a
+        else:
+            if col_to_get!=None:return a[no_col][col_to_get]
+            else:return a[no_col]
+    except IndexError:return {}
 
 def newmessage(d):
     sql = insert("messages",6)
@@ -74,3 +84,17 @@ def newmessage(d):
     
 def getuid(d):
     return select("users","uid","userid",d['from_user']['id'])
+
+def insertzadan():
+    data1 = json.load(open('fipi/fipi.json', 'r'))
+    for k, v in data1.items():
+        data2 =select("fipi",col_to_get=None,no_col="all")
+        mas=[]
+        for i in data2:
+            mas.append(int(i["idzad"]))
+            if k==i["zad"]:break
+        else:
+            id=str(max(mas)+1)
+            while len(id)<6:id="0"+id
+            onbase(insert("fipi", 2).format(id,k))
+#insertzadan()
