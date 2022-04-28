@@ -12,7 +12,475 @@
     <style type="text/css">.img_scroll_container {height: 400px;overflow-y: scroll;text-align: center;width: 100%}.img_scroll_container img {width: 700px}.printbody .img_scroll_container {height: auto;overflow-y: hidden}.printbody .img_scroll_container img {width: 65vw}</style>
     <script language="javascript">var qguid = "", qfiles_location = "http://ege.fipi.ru/os11/"; function ShowPictureQ(i, e) { for (; 0 < (p = i.indexOf(". "));)i = i.substring(0, p + 1) + i.substring(p + 2); document.write('<IMG SRC="' + qfiles_location + i + '" ALIGN=ABSMIDDLE alt="' + e + '" border="0"> ') } function ShowPictureQBL(i, e, t, o) { for (; 0 < (p = i.indexOf(". "));)i = i.substring(0, p + 1) + i.substring(p + 2); var n = t / 2 - o; n < 0 && (n = -n), document.write('<IMG SRC="' + qfiles_location + i + '" ALIGN=MIDDLE border="0" alt="' + e + '" VSPACE=' + n + ' STYLE="position:relative; top:' + (t / 2 - o) + 'px;">') } function ReplaceByLarge(i, e) { i.onload = ""; var t = 95 * i.width / 100, o = 95 * i.height / 100; t && o && (i.src = e, i.width = t, i.height = o) } function ShowPictureQ2WH(i, e, t, o, n) { (0 < i.indexOf(".flv") || 0 < i.indexOf(".mp4") || 0 < i.indexOf(".swf")) && (i = "http://ege.fipi.ru/os11/show_media.php?m=" + encodeURIComponent(i) + "&w=" + o + "&h=" + n), o += 40, n += 30, 0 < i.indexOf(".jpg") || 0 < i.indexOf(".png") || 0 < i.indexOf(".gif") ? document.write('<IMG largeImg="' + qfiles_location + i + '" BORDER=0 SRC="' + qfiles_location + e + '" ALIGN=ABSMIDDLE alt="' + t + '"> ') : document.write("<a href=\"javascript:var wnd=window.open('" + qfiles_location + i + "','',',status=1,resizable=1,menubar=0,scrollbars=1,width=" + o + ", height=" + n + ",left=" + (screen.width - o) / 2 + ",top=" + (screen.height - n) / 2 + '\');wnd.focus();"><IMG BORDER=0 SRC="' + qfiles_location + e + '" ALIGN=ABSMIDDLE style="cursor:pointer" alt="' + t + '"></a> ') } function ShowPictureQ3WH(i, e, t, o, n, r) { ShowPictureQ2WH(i, e, o, n, r) } function ShowPictureQ2(i, e, t) { ShowPictureQ2WH(i, e, t, 600, 400) } function invertImage(i, e, t) { 0 < i.src.indexOf(e) ? i.src = qfiles_location + t : i.src = qfiles_location + e } function ShowPictureQ3(i, e, t) { for (; 0 < (p = i.indexOf(". "));)i = i.substring(0, p + 1) + i.substring(p + 2); var o = 0 < i.indexOf(".jpg") || 0 < i.indexOf(".png") || 0 < i.indexOf(".gif") ? "onclick=\"invertImage(this, '" + i + "', '" + e + "')\"" : ""; document.write('<IMG SRC="' + qfiles_location + e + '" ' + o + ' ALIGN=ABSMIDDLE style="cursor:pointer" alt="' + t + '" border="0"> ') } function showXGraphic(i) { document.write('<object classid="CLSID:A40BD42C-2DF9-4DB6-AE58-6411A05C7827" ID=GraphX, width=258, height=410 ><param name=DEsignMode value=1><param name="Buffer" value=\'<?xml version=\"1.0\"?>' + i + "'></object>") } function ShowPictureQGX2(i, e) { w = 500, h = 400, document.write("<a href=\"javascript:var wnd=window.open('http://ege.fipi.ru/os11/showxgprahic.php?qguid=" + qguid + "&xml=" + e + "','',',status=1,resizable=1,menubar=0,scrollbars=1,width=" + w + ", height=" + h + ",left=" + (screen.width - w) / 2 + ",top=" + (screen.height - h) / 2 + '\');wnd.focus();"><IMG BORDER=0 SRC="' + qfiles_location + i + '" ALIGN=ABSMIDDLE style="cursor:pointer"></a> ') }</script>
     <style type="text/css">img {height: 75vw;margin:0; position: center;padding:5vw;border:none;} td{border:none!important;}</style>
+            <td class='find' valign='top' width='100%'> <p class='MsoNormal'>В летнем лагере 236 детей и 28 воспитателей. В автобус помещается не более 49 пассажиров. Какое наименьшее количество автобусов понадобится, чтобы за один раз перевезти всех из лагеря в город?<span></span></p> </td>
 
-<!-- </body>
+    <script language='JavaScript1.2'>
+        var pagecnt=0;
+        var fpEvent_lastObjectBreaked=false;
+        
+        function insertHTML(node,html,insType)
+        {
+        if (browser.isIE)
+            {
+            node.insertAdjacentHTML(insType, html);
+            }
+        else
+        if (insType=='beforeEnd')
+            {
+            node.innerHTML=node.innerHTML+html;
+            }
+        else
+            {
+            var range = document.createRange();
+            if (insType=='beforeBegin')
+                 range.setStartBefore(node);
+            else
+                 range.setStartAfter(node);
+              var docFrag = range.createContextualFragment(html);
+            if (insType=='beforeBegin')
+                node.parentNode.insertBefore(docFrag, node);
+            else
+            if (node.nextSibling)
+                node.parentNode.insertBefore(docFrag, node.nextSibling)
+            else
+                node.parentNode.appendChild(docFrag);
+            }
+        }
+        
+        function insertPage(pbreak)
+        {
+        pagecnt++;
+        var header='<tr><td valign=top height=35></td></tr>';
+        header=header.replace("#pg#",pagecnt+0);
+        var footer='<tr><td valign=bottom height=35></td></tr>';
+        var table='<table width=650 height=970 id="page'+pagecnt+'" align=center '+(pbreak?'style="page-break-after: always"':'')+' cellspacing=0 cellpadding=0>'+header+'<tr><td height=900 valign=top></td></tr>'+footer+'</table>';
+        insertHTML(alldata,table,'beforeBegin');
+        tbl=eval('page'+pagecnt);
+        return tbl;
+        }
+        
+        
+        
+        function breakQObject(qobjClone,qobjNo,page,height)
+        {
+        var container=alldata.rows[0].cells[0];
+        var qobject=container.childNodes[qobjNo];
+        var result=0;
+        var parseP=false;
+        
+        if (qobjClone.nodeName=='P' && qobjClone.childNodes.length==1 && qobjClone.childNodes[0].nodeName=='TABLE')
+            parseP=true;
+        if (parseP || qobject.nodeName=='TABLE')
+            {
+            var qrow=-1;
+            if (!parseP)
+                for (var i=0; i<qobjClone.rows.length; i++)
+                    if (qobjClone.rows[i].getAttribute('qrow'))
+                        {
+                        qrow=i;
+                        break;
+                        }
+            if (qrow>=0) // если задание
+                {
+                for (var i=qobjClone.rows.length-1; i>qrow; i--)
+                    qobjClone.deleteRow(i);
+                var qrcell=qobjClone.rows[qrow].cells[1];
+                var qtable=qrcell.childNodes[0];
+                if (qtable.nodeName=='SCRIPT' || (!browser.isIE && qtable.nodeName=='#text')) // Убрать скрипты
+                    for (var i=1; i<qrcell.childNodes.length; i++) 
+                        if (qrcell.childNodes[i].nodeName!='SCRIPT' && qrcell.childNodes[i].nodeName!='#text')	
+                            {
+                            qtable=qrcell.childNodes[i];
+                            break;
+                            }
+                if (qtable.nodeName!='TABLE')			// возможны внешние формы
+                    for (var i=0; i<qtable.childNodes.length; i++)
+                        if (qtable.childNodes[i].nodeName=='TABLE')	
+                            {
+                            qtable=qtable.childNodes[i];
+                            break;
+                            }
+        
+            
+                for (var i=qtable.rows.length-1; i>0; i--) // оставляем ячейку с текстом задания
+                    qtable.deleteRow(i);
+                
+                var qtcell=qtable.rows[0].cells[0]; // погружаемся внуть ячейки
+            
+                
+                while (page.offsetHeight>height && qtcell.childNodes.length>1) // удаляем излишки
+                    qtcell.removeChild(qtcell.childNodes[qtcell.childNodes.length-1]);
+                if (page.offsetHeight<=height)
+                    {
+                    // очистка основного элемента
+                    rowsToDel=qtcell.childNodes.length;
+                    for (var i=0; i<qrow; i++)  // удалить все до задания
+                        qobject.deleteRow(0);
+                    // заменить номер
+                    qobject.rows[0].cells[0].innerHTML='&nbsp;&nbsp;<b>&nbsp;&nbsp;&nbsp;&nbsp;</b>&nbsp;&nbsp;';
+                    qrcell=qobject.rows[0].cells[1];
+                    qtable=qrcell.childNodes[0];
+                    // поиск ячейки с текстом задания (аналогично поиску в клоне)
+                    if (qtable.nodeName=='SCRIPT' || (!browser.isIE && qtable.nodeName=='#text'))
+                        for (var i=1; i<qrcell.childNodes.length; i++) 
+                            if (qrcell.childNodes[i].nodeName!='SCRIPT' && qrcell.childNodes[i].nodeName!='#text')	
+                                {
+                                qtable=qrcell.childNodes[i];
+                                break;
+                                }
+                    if (qtable.nodeName!='TABLE')
+                        for (var i=0; i<qtable.childNodes.length; i++)
+                            if (qtable.childNodes[i].nodeName=='TABLE')	
+                                {
+                                qtable=qtable.childNodes[i];
+                                break;
+                                }
+                    qtcell=qtable.rows[0].cells[0];
+                    for (var i=0; i<rowsToDel; i++)  // удаление скопированной части
+                        qtcell.removeChild(qtcell.childNodes[0]);
+                    result=1;
+                    }
+                }
+            else
+                {
+                var qtable=(parseP?qobjClone.childNodes[0]:qobjClone);
+                if (qtable.rows.length>1)
+                    {
+                    while (page.offsetHeight>height && qtable.rows.length>2)
+                        qtable.deleteRow(qtable.rows.length-1);
+                    if (page.offsetHeight<=height)
+                        {
+                        var rowsToDel=qtable.rows.length;
+                        qtable=(parseP?qobject.childNodes[0]:qobject);
+                        for (var i=0; i<rowsToDel; i++)
+                            qtable.deleteRow(0);
+                        result=1;
+                        }
+                    }
+                }
+            }
+        return result;
+        }
+        
+        function tryToInsert(page,i,icnt)
+        {
+        fpEvent_lastObjectBreaked=false;
+        var height=page.offsetHeight;
+        var dcell=page.rows[1].cells[0];
+        var dcheight=dcell.offsetHeight;
+        var container=alldata.rows[0].cells[0];
+        var childcnt=dcell.childNodes.length;
+        
+        var chkHeight=(height<970?970:height);
+        for (var k=0; k<icnt; k++)
+            {
+            var node=container.childNodes[i+k];
+            if (browser.isIE)
+                {
+                dcell.insertAdjacentHTML('beforeEnd', (node.nodeName=='#text'?node.nodeValue:node.outerHTML));  // иначе уменьшаются формулы (какой-то глюк одной из версий 7-го эксплорера в XP)
+                }
+            else
+                {
+                var cnode=node.cloneNode(true); 
+                dcell.appendChild(cnode);
+                }
+            }
+        
+        if (chkHeight<page.offsetHeight  && dcell.childNodes[dcell.childNodes.length-1].offsetHeight>dcheight)
+            {
+            breakQObject(dcell.childNodes[dcell.childNodes.length-1],i+icnt-1, page, chkHeight);
+            fpEvent_lastObjectBreaked=true; // т.к. добавляется клон для попытки урезания
+                                            // базовый нод изменяется только если высота набирается
+            }
+        
+        if (chkHeight>=page.offsetHeight) // если добавилось удачно
+            {
+            return (fpEvent_lastObjectBreaked? icnt-1 : icnt);
+            }
+        else
+        if (childcnt>0) // если неудачно и страница не пустая - то отклоняем добавление
+            {
+            while (dcell.childNodes.length>childcnt)
+                dcell.removeChild(dcell.childNodes[dcell.childNodes.length-1]);
+            return 0;
+            }
+        else // не удается добавить в пустую страницу
+            {
+            var k=dcell.childNodes.length;
+            while (k>0 && chkHeight<page.offsetHeight)
+                {
+                if (dcell.childNodes[k-1].offsetHeight>dcheight && k<icnt)
+                    {
+                    if (breakQObject(dcell.childNodes[k-1],i+k-1, page, chkHeight))
+                        {k--; break;} // удалось разрезать
+                    }
+                dcell.removeChild(dcell.childNodes[k-1]);
+                k--;
+                }
+            if (!dcell.childNodes.length)
+                {
+                var node=container.childNodes[i];
+                var cnode=node.cloneNode(true);
+                dcell.appendChild(cnode);
+                k++;
+                }
+            return k; // k=0 если удалось порезать, иначе k>0
+            }
+        }
+        
+        function formatePage(breakAfterLast)
+            {
+            var innerFSCorrect=false;
+            if (!fontSizeCorrected)	
+                {
+                correctFontSize();
+                innerFSCorrect=true;
+                }
+            var container=alldata.rows[0].cells[0];
+            var pagestart=0;
+            var createpage=true;
+            var page;
+            var icnt=1;
+            for (var i=0; i<container.childNodes.length; i+=icnt)
+                {
+                icnt=1;
+                if (createpage) page=insertPage(true);
+                    
+                if ((container.childNodes[i].nodeName=='BR') && (container.childNodes[i].style.pageBreakBefore == 'always'))	
+                    {
+                     createpage=true;
+                    }
+                else
+                    {
+                    createpage=false;
+        
+                    if ((i<container.childNodes.length-1) && (container.childNodes[i+1].nodeName=='A')&& 
+                                container.childNodes[i+1].getAttribute('nobr')=='1')
+                        {
+                        var textlen=0; 
+                        var h=page.rows[1].cells[0].offsetHeight;
+                        if (container.childNodes[i].offsetHeight + container.childNodes[i+2].offsetHeight<h)
+                            {
+                            icnt++;
+                            for (j=i+2; j<container.childNodes.length && j<=i+5; j++)
+                                {
+                                icnt++;
+                                if (container.childNodes[j].nodeName!='#text')
+                                    textlen+=container.childNodes[j].innerText.length;
+                                else
+                                    textlen+=container.childNodes[j].nodeValue.length;
+                                if (textlen>150) break;
+                                }
+                            }
+                        }
+        
+                    var ricnt=tryToInsert(page,i,icnt); // попытка добавть объекты в страницу, ricnt -  количество добавленых объектов
+                    if (ricnt<=0) // если не добавилось - то создаем следующую страницу
+                        {
+                        page=insertPage(true);
+                        ricnt=tryToInsert(page,i,icnt); // в пустую добавление обязательно
+                        }
+                    icnt=ricnt;
+                    }
+                }			
+            if (!breakAfterLast) page.style.pageBreakAfter='';
+            container.innerHTML='';
+            document.body.removeChild(alldata);
+            if (innerFSCorrect) 
+                restoreFontSize();	
+            }
+            
+        
+        
+          
+        function stretchByHeight()
+        {
+        for (var p=1; p<pagecnt; p++)
+          try
+            {
+            var page=eval("page"+p).rows[1].cells[0];
+            var n=0; var brn=0;
+            var pl=page.childNodes.length;
+            var foundBefore=false;
+            if (pl<=0) continue;
+            for (var i=0; i<pl; i++)
+                {
+                if (page.childNodes[i].innerHTML.indexOf('qstlabel')>0)
+                    {
+                    n++;
+                    if (!foundBefore && i>0)
+                        brn++;
+                    if (i<pl-1) brn++;
+                    foundBefore=true;
+                    }
+                else foundBefore=false;
+                }
+            heightToAdd=page.offsetHeight-(page.childNodes[pl-1].offsetTop+page.childNodes[pl-1].offsetHeight)-20;
+            if (heightToAdd>brn && brn>1 && heightToAdd>5)
+                {
+                foundBefore=false;
+                for (var i=0; i<pl; i++)
+                    {
+                    if (page.childNodes[i].innerHTML.indexOf('qstlabel')>0)
+                        {
+                        if (!foundBefore && i>0)
+                            {
+                            hg=(heightToAdd/brn);
+                            brn--;
+                            heightToAdd-=hg;
+                            if (hg)
+                                {
+                                br='<table cellspacing=0 cellpadding=0><tr><td><img usetype="estr" src="../../images/pt.gif" height="'+hg+'"></td></tr></table>';
+                                insertHTML(page.childNodes[i], br, 'beforeBegin');
+                                i++; pl++;
+                                }
+                            }
+                        if (i<pl-1)
+                            {
+                            hg=(heightToAdd/brn);
+                            brn--;
+                            heightToAdd-=hg;
+                            if (hg)
+                                {
+                                br='<table cellspacing=0 cellpadding=0><tr><td><img usetype="estr" src="../../images/pt.gif" height="'+hg+'"></td></tr></table>';
+                                  insertHTML(page.childNodes[i], br, 'afterEnd');
+                                i++; pl++;
+                                }
+                            }
+                        foundBefore=true;
+                        }
+                    else foundBefore=false;
+                    }
+                }
+            } catch(e) {}
+        }
+        
+        function reformateTables()
+        {
+        var tables = document.body.getElementsByTagName('TABLE');
+        for (var i=0; i<tables.length; i++)
+           try
+            {
+            var tbl=tables[i];
+            if (tbl.border)
+                {
+                tbl.border=0;
+                tbl.cellspacing=0;
+                tbl.style.borderColor='#000000';
+                tbl.style.borderRightStyle='solid'; 
+                tbl.style.borderBottomStyle='solid';
+                tbl.style.borderWidth=1;
+                tbl.cellpadding=3;
+                if (tbl.width=='100%') tbl.width='99.5%';
+                for (var r=0; r<tbl.rows.length; r++)
+                    for (var j=0; j<tbl.rows[r].cells.length; j++)
+                       try
+                        {
+                        var cell=tbl.rows[r].cells[j];
+                        cell.style.borderColor='#000000';
+                        cell.style.borderLeftStyle='solid'; 
+                        cell.style.borderTopStyle='solid'; 
+                        cell.style.borderWidth=1;
+                        } catch (e) {};
+                }
+            } catch (e) {};
+        
+        }
+        
+        var bodyFontSize=document.body.style.fontSize;
+        var fontSizeCorrected=false;
+        
+        function correctFontSize()
+        { // 90% ???
+        return;
+        if (bodyFontSize=='15pt')
+            document.body.style.fontSize='13.75pt';
+        else if (bodyFontSize=='14pt')
+            document.body.style.fontSize='12.5pt';
+        else if (bodyFontSize=='11pt')
+            document.body.style.fontSize='10pt';
+        else if (bodyFontSize=='9pt')
+            document.body.style.fontSize='8pt';
+            
+        fontSizeCorrected=true;
+        }
+        
+        function restoreFontSize()
+        {
+        document.body.style.fontSize=bodyFontSize;
+        fontSizeCorrected=false;
+        }
+        
+        
+        function formatePageCoarse()
+        {
+        var chkHeight=970;
+        var container=alldata.rows[0].cells[0];
+        var pagestart=0;
+        var br="<br style='mso-special-character:line-break; page-break-after:always'>";
+        var icnt=0;
+        for (var i=1; i<container.childNodes.length; i++)
+            {
+            node=container.childNodes[i];
+            if (node.nodeName=='#text') continue;
+            if ((node.offsetTop+node.offsetHeight-pagestart>=chkHeight) && icnt>0) 
+                {
+                insertHTML(container.childNodes[i], br, 'beforeBegin');
+                pagestart=container.childNodes[i+1].offsetTop;
+                icnt=0;
+                }
+            else icnt++;
+            }
+        }
+        </script><script type="text/x-mathjax-config">MathJax.Hub.Config({messageStyle: "none", "HTML-CSS": { matchFontHeight: true }, MMLorHTML: { prefer: { MSIE: "MML" } } });</script><SCRIPT language=JavaScript src="../../lib/bdetect.js" type=text/javascript></SCRIPT>
+        
+        <script language='JavaScript'>
+        var crtm="1651180591";
+        function SubmitForm(aform,pgname)
+        {
+        var aEl = document.createElement('input');
+        if (!browser.isMac || !browser.isIE)
+          aEl.type = 'hidden';
+        aEl.style.display = 'none';
+        aEl.name = 'crtm';
+        aEl.value = crtm;
+        aform.appendChild(aEl);
+        aform.action=pgname;
+        aform.submit();
+        
+        }
+        function GetPageName(pgname,extparams){
+        if (pgname=='') pgname='/os11/project/questions/question_view.php';
+        if (extparams=='')
+            pgname=pgname+"?crtm="+crtm;
+        else	pgname=pgname+"?crtm="+crtm+"&"+extparams;
+        return pgname;}
+        function ShowPage(pgname,extparams,wndname,wndparam){
+        if (wndname=='') {
+        
+          location.href=GetPageName(pgname,extparams);
+        
+          }
+          else
+         {if (wndparam=='')
+        wnd=window.open(GetPageName(pgname,extparams),wndname);
+        else wnd=window.open(GetPageName(pgname,extparams),wndname,wndparam);
+        wnd.focus();}
+        }
+        </script>
+        <script language='javascript'>
+                        function onXS3DocumectLoad() {correctFontSize();
+        reformateTables();
+        restoreFontSize();
+         }
+        
+                if (window.addEventListener)
+                    window.addEventListener('load', onXS3DocumectLoad);
+                else if (window.attachEvent)
+                    window.attachEvent('onload', onXS3DocumectLoad);
+                else
+                    window.onload = onXS3DocumectLoad;
+         </script>
+</body>
 
-</html> --><td class='find' valign='top' width='100%'> <p class='MsoNormal'>В летнем лагере 236 детей и 28 воспитателей. В автобус помещается не более 49 пассажиров. Какое наименьшее количество автобусов понадобится, чтобы за один раз перевезти всех из лагеря в город?<span></span></p> </td></body></html>
+</html>
